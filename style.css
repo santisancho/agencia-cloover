@@ -1,0 +1,287 @@
+/* ========================= Fuentes ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Monument+Extended:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600&display=swap');
+
+/* ========================= Variables ========================= */
+:root {
+  --primary1: #EDDEC9;
+  --primary2: #331922;
+  --primary3: #BDADEA;
+  --secondary1: #48A9A6;
+  --secondary2: #E03E59;
+}
+
+/* ========================= Base ========================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* scroll controlado */
+  background: transparent;
+  font-family: 'Clash Display', sans-serif;
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========================= Canvas: fondo ========================= */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: black; /* fallback */
+}
+
+.logo-container {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bg-logo {
+  width: 280px;
+  display: block;
+  filter: drop-shadow(0 0 60px #c79c65);
+  animation: glowPulse 4s ease-in-out infinite;
+  opacity: 0.95;
+}
+
+@keyframes glowPulse {
+  0%   { filter: drop-shadow(0 0 30px #c79c65); }
+  50%  { filter: drop-shadow(0 0 80px #c79c65); }
+  100% { filter: drop-shadow(0 0 30px #c79c65); }
+}
+
+/* ========================= Logo 3D ========================= */
+#cloover-3d {
+  position: fixed;
+  top: 50%; left: 50%;
+  width: 220px;
+  height: 220px;
+  background: url("img/Copia de Mesa de trabajo 20-103.png") no-repeat center/contain;
+  transform: translate(-50%, -50%) rotateY(0deg);
+  filter: drop-shadow(0 0 30px rgba(237, 222, 201, 0.7));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  z-index: -1;
+  pointer-events: auto;
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotateY(0deg); }
+  to   { transform: translate(-50%, -50%) rotateY(360deg); }
+}
+
+/* ========================= Navbar ========================= */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  background: rgba(51, 25, 34, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--primary1);
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--secondary2);
+}
+
+/* ========================= Secciones ========================= */
+.section {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(100px);
+  transition: opacity 1s ease, transform 1s ease;
+  z-index: 2;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.section:first-of-type {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Hero */
+.hero {
+  background: url('img/surf.webp') no-repeat center center/cover;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(51, 25, 34, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--primary1);
+  animation: fadeIn 2s ease;
+}
+
+.hero-content h1 {
+  font-family: 'Monument Extended', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.stair-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-100px);
+  animation: dropIn 0.6s ease forwards;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #6c5ce7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(-40px);
+  animation: dropIn 0.6s ease forwards;
+  animation-delay: 1.5s;
+}
+
+.btn-primary:hover {
+  background: var(--secondary1);
+  color: white;
+}
+
+/* ========================= Sección Nosotros ========================= */
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 160px 10%;
+  text-align: center;
+  color: var(--primary1);
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+.about-title {
+  font-family: 'Monument Extended', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.about-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: rgba(237,222,201,0.08);
+  border: 1px solid rgba(237,222,201,0.3);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 380px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  text-align: left;
+
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--primary3);
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--primary1);
+}
+
+.card.mission { animation-delay: 0.5s; }
+.card.vision  { animation-delay: 0.8s; }
+
+/* ========================= Animaciones ========================= */
+@keyframes dropIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
