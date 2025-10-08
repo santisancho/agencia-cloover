@@ -231,3 +231,154 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+
+
+
+
+// MENU MOVIL: toggle simple
+const navToggle = document.querySelector(".nav-toggle");
+const navbar = document.querySelector(".navbar");
+if (navToggle && navbar) {
+  navToggle.addEventListener("click", () => {
+    navbar.classList.toggle("open");
+  });
+
+  // Cerrar cuando clickeás un link del menu
+  document.querySelectorAll(".nav-links a").forEach(a => {
+    a.addEventListener("click", () => {
+      navbar.classList.remove("open");
+    });
+  });
+
+  // cerrar tocando fuera (en mobile)
+  window.addEventListener("click", (e) => {
+    if (!navbar.classList.contains("open")) return;
+    const inside = navbar.contains(e.target);
+    if (!inside) navbar.classList.remove("open");
+  });
+}
+
+
+
+
+
+
+
+
+function updateNavbar() {
+  const navbar = document.querySelector(".navbar");
+  if (!navbar) return;
+
+  if (currentIndex > 0) {
+    navbar.classList.add("compact"); // 🔽 ya no está en la primera sección
+  } else {
+    navbar.classList.remove("compact"); // 🔼 en la primera sección
+  }
+}
+
+// Llamar cada vez que cambie de sección
+function showSection(index) {
+  if (isScrolling || index < 0 || index >= sections.length || index === currentIndex) return;
+
+  isScrolling = true;
+  const prevSec = sections[currentIndex];
+  const nextSec = sections[index];
+
+  // Mostrar la nueva sección
+  nextSec.style.visibility = "visible";
+  nextSec.style.pointerEvents = "auto";
+  nextSec.style.opacity = "1";
+  nextSec.style.transform = "translateY(0)";
+
+  // Ocultar la anterior
+  prevSec.style.opacity = "0";
+  prevSec.style.transform = "translateY(100px)";
+  prevSec.style.pointerEvents = "none";
+
+  // Actualizar hash y estado
+  history.replaceState(null, "", `#${nextSec.id}`);
+  currentIndex = index;
+
+  // 👉 actualizar navbar
+  updateNavbar();
+
+  // Esperar transición
+  setTimeout(() => {
+    prevSec.style.visibility = "hidden";
+    isScrolling = false;
+  }, TRANSITION_DURATION + 20);
+}
+
+
+
+
+
+
+
+// ------------------------- CARRUSEL CLIENTES -------------------------
+const clientesTrack = document.querySelector('.clientes-track');
+clientesTrack.innerHTML += clientesTrack.innerHTML; // duplicar logos
+
+let clientesPos = 0;
+const clientesSpeed = 1;
+
+let clientesWidth = 0;
+const updateClientesWidth = () => {
+  clientesWidth = Array.from(clientesTrack.children).reduce((acc, el) => acc + el.offsetWidth + 60, 0);
+};
+updateClientesWidth();
+window.addEventListener('resize', updateClientesWidth);
+
+let clientesAnim;
+const animateClientes = () => {
+  clientesPos -= clientesSpeed;
+  if (Math.abs(clientesPos) >= clientesWidth / 2) clientesPos = 0;
+  clientesTrack.style.transform = `translateX(${clientesPos}px)`;
+  clientesAnim = requestAnimationFrame(animateClientes);
+};
+animateClientes();
+
+clientesTrack.parentElement.addEventListener('mouseenter', () => cancelAnimationFrame(clientesAnim));
+clientesTrack.parentElement.addEventListener('mouseleave', animateClientes);
+
+// ------------------------- CARRUSEL SERVICIOS -------------------------
+const serviciosTrack = document.querySelector('.section.servicios .track');
+serviciosTrack.innerHTML += serviciosTrack.innerHTML; // duplicar cards
+
+let serviciosPos = 0;
+const serviciosSpeed = 0.8; // más lento que clientes
+
+let serviciosWidth = 0;
+const updateServiciosWidth = () => {
+  serviciosWidth = Array.from(serviciosTrack.children).reduce((acc, el) => acc + el.offsetWidth + 30, 0);
+};
+updateServiciosWidth();
+window.addEventListener('resize', updateServiciosWidth);
+
+let serviciosAnim;
+const animateServicios = () => {
+  serviciosPos -= serviciosSpeed;
+  if (Math.abs(serviciosPos) >= serviciosWidth / 2) serviciosPos = 0;
+  serviciosTrack.style.transform = `translateX(${serviciosPos}px)`;
+  serviciosAnim = requestAnimationFrame(animateServicios);
+};
+animateServicios();
+
+serviciosTrack.parentElement.addEventListener('mouseenter', () => cancelAnimationFrame(serviciosAnim));
+serviciosTrack.parentElement.addEventListener('mouseleave', animateServicios);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
