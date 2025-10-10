@@ -13,17 +13,22 @@
 
 /* ========================= Base ========================= */
 html, body {
-   margin: 0;
-    padding: 0; 
-    width: 100%; 
-    height: 100%; 
-    overflow: hidden; 
+  margin: 0;
+  padding: 0; 
+  width: 100%; 
+  height: 100%; 
+  overflow: hidden; 
+  background: transparent; 
+  font-family: 'Clash Display', sans-serif; 
+  color: white; 
+}
 
-    /* scroll controlado */ 
-    background: transparent; 
-    font-family: 'Clash Display', sans-serif; 
-    color: white; 
-  }
+
+
+
+  html {
+  scroll-behavior: smooth;
+}
 
 
 
@@ -189,7 +194,7 @@ html, body {
 
 /* Hero */
 .hero {
-  background: url('img/surf.webp') no-repeat center center/cover;
+  background: url('img/foto\ hero.jpg') no-repeat center center/cover;
   position: relative;
 }
 
@@ -518,10 +523,11 @@ html, body {
 
 .clientes-carousel {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 0;
 }
 
 .clientes-track {
@@ -550,6 +556,17 @@ html, body {
   filter: brightness(0) invert(1);
   transition: transform 0.3s ease;
 }
+
+.cliente img[src*="buroisotipo"] {
+  width: 200px;  /* antes 80px */
+  height: 200px;
+}
+
+.clientes img[src*="aguas png.png"] {
+  width: 110px;
+  height: 110px;
+}
+
 
 .cliente:hover {
   transform: scale(1.1);
@@ -586,15 +603,157 @@ html, body {
 
 
 
+/* ========================= SECCIÓN EQUIPO ========================= */
+.equipo {
+  background: #EDDEC9;
+  color: #331922;
+  text-align: center;
+  padding: 120px 20px;
+  position: relative;
+}
 
+.equipo-title {
+  font-family: 'Monument Extended', sans-serif;
+  font-size: 2.6rem;
+  margin-bottom: 70px;
+  color: #331922;
+  text-transform: uppercase;
+}
 
+.piramide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
 
+.nivel {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
 
+.persona {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.persona img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #331922;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
 
+.persona:hover {
+  transform: scale(1.1);
+}
 
+.persona:hover img {
+  filter: brightness(1.1);
+}
 
+.nombre {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #331922;
+  color: #EDDEC9;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: bottom 0.3s ease, opacity 0.3s ease;
+}
 
+.persona:hover .nombre {
+  bottom: -45px;
+  opacity: 1;
+}
+
+/* Info Card desplegable */
+.info-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(51,25,34,0.95);
+  color: #EDDEC9;
+  padding: 40px 50px;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+
+.info-card.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.info-card h3 {
+  font-family: 'Monument Extended', sans-serif;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.info-card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.info-card img {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.3s ease;
+}
+
+.info-card a:hover img {
+  transform: scale(1.15);
+}
+
+.info-card .close {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #EDDEC9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .piramide {
+    gap: 50px;
+  }
+
+  .persona {
+    width: 110px;
+    height: 110px;
+  }
+
+  .nombre {
+    font-size: 0.8rem;
+  }
+
+  .equipo-title {
+    font-size: 2rem;
+  }
+}
 
 
 
@@ -800,6 +959,7 @@ html, body {
   .carousel .card { flex: 0 0 320px; }
   .hero-content h1 { font-size: 2.4rem; }
 }
+
 
 
 

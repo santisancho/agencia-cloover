@@ -377,7 +377,26 @@ serviciosTrack.parentElement.addEventListener('mouseleave', animateServicios);
 
 
 
+// ==== SECCIÓN EQUIPO ====
+const personas = document.querySelectorAll('.persona');
+const infoCard = document.querySelector('.info-card');
+const nombreEl = document.getElementById('info-nombre');
+const rolEl = document.getElementById('info-rol');
+const instaEl = document.getElementById('info-instagram');
+const closeBtn = document.querySelector('.info-card .close');
 
+personas.forEach(p => {
+  p.addEventListener('click', () => {
+    nombreEl.textContent = p.querySelector('.nombre').textContent;
+    rolEl.textContent = p.dataset.role;
+    instaEl.href = p.dataset.instagram;
+    infoCard.classList.add('active');
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  infoCard.classList.remove('active');
+});
 
 
 

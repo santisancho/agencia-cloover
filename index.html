@@ -43,7 +43,6 @@
       <h1 class="stair-title">
         No apostamos a la suerte,<br> apostamos a las ideas
       </h1>
-      <button class="btn-primary">Conócenos</button>
     </div>
   </section>
 
@@ -58,7 +57,7 @@
 
       <div class="about-cards">
         <div class="card mission">
-          <h3>🌱 Misión</h3>
+          <h3> Misión</h3>
           <p>
             Ver crecer ideas. Amamos transformar una marca en algo que respire, que se mueva, que tenga onda. 
             Nos metemos en cada proyecto como si fuera propio.
@@ -66,7 +65,7 @@
         </div>
 
         <div class="card vision">
-          <h3>✨ Visión</h3>
+          <h3> Visión</h3>
           <p>
             Queremos trabajar con marcas que nos inspiren, nos desafíen y nos hagan darlo todo. 
             No buscamos ser los más grandes, buscamos ser los más fieles a nosotros mismos.
@@ -211,7 +210,7 @@
 
 <!-- SECCIÓN CLIENTES -->
 <section id="clientes" class="section clientes">
-  <h2>Clientes que se unieron al cloov</h2>
+  <h2>Clientes que se unieron al Cloov</h2>
 
   <div class="clientes-carousel">
     <div class="clientes-track">
@@ -222,10 +221,10 @@
         <img src="img/aguas png.png" alt="Cliente 2">
       </a>
       <a href="https://instagram.com/cliente3" target="_blank" class="cliente">
-        <img src="img/buroburguer.png" alt="Cliente 3">
+        <img src="img/buroisotipo.png" alt="Cliente 3">
       </a>
       <a href="https://instagram.com/cliente4" target="_blank" class="cliente" >
-        <img src="img/seguridad.png" alt="Cliente 4">
+        <img src="img/seguridadisotipo.png" alt="Cliente 4">
       </a>
       <!-- Duplicados para loop infinito -->
       <a href="https://instagram.com/cliente1" target="_blank" class="cliente" >
@@ -235,10 +234,10 @@
         <img src="img/aguas png.png" alt="Cliente 2">
       </a>
       <a href="https://instagram.com/cliente3" target="_blank" class="cliente" >
-        <img src="img/buroburguer.png" alt="Cliente 3">
+        <img src="img/buroisotipo.png" alt="Cliente 3">
       </a>
       <a href="https://instagram.com/cliente4" target="_blank" class="cliente" >
-        <img src="img/seguridad.png" alt="Cliente 4">
+        <img src="img/seguridadisotipo.png" alt="Cliente 4">
       </a>
     </div>
   </div>
@@ -248,28 +247,80 @@
 
 
 
+<section id="equipo" class="section equipo">
+  <h2 class="equipo-title">Nuestro Equipo</h2>
 
+  <div class="piramide">
+    <!-- Co-Founders -->
+    <div class="nivel founders">
+      <div class="persona" data-role="Co-Founder" data-instagram="https://instagram.com/santiagoboveri">
+        <img src="img/santiago-boveri.jpg" alt="Santiago Boveri">
+        <span class="nombre">Santiago Boveri</span>
+      </div>
 
+      <div class="persona" data-role="Co-Founder" data-instagram="https://instagram.com/pablonicotra">
+        <img src="img/pablo-nicotra.jpg" alt="Pablo Nicotra">
+        <span class="nombre">Pablo Nicotra</span>
+      </div>
+    </div>
 
+    <!-- Community Managers -->
+    <div class="nivel cms">
+      <div class="persona" data-role="Community Manager" data-instagram="https://instagram.com/belensancho">
+        <img src="img/belen-sancho.jpg" alt="Belen Sancho">
+        <span class="nombre">Belen Sancho</span>
+      </div>
 
+      <div class="persona" data-role="Community Manager" data-instagram="https://instagram.com/marianoelferrari">
+        <img src="img/maria-noel.jpg" alt="Maria Noel Ferrari">
+        <span class="nombre">Maria Noel Ferrari</span>
+      </div>
 
+      <div class="persona" data-role="Community Manager" data-instagram="https://instagram.com/gioarman">
+        <img src="img/gio-arman.jpg" alt="Gio Arman">
+        <span class="nombre">Gio Arman</span>
+      </div>
+    </div>
 
+    <!-- Web Designers -->
+    <div class="nivel designers">
+      <div class="persona" data-role="Web Designer" data-instagram="https://instagram.com/nicolascarcagno">
+        <img src="img/nicolas-carcagno.jpg" alt="Nicolas Carcagno">
+        <span class="nombre">Nicolas Carcagno</span>
+      </div>
 
+      <div class="persona" data-role="Web Designer" data-instagram="https://instagram.com/santiagosancho">
+        <img src="img/santiago-sancho.jpg" alt="Santiago Sancho">
+        <span class="nombre">Santiago Sancho</span>
+      </div>
+    </div>
+  </div>
 
+  <!-- Modal de información -->
+  <div class="info-card">
+    <span class="close">&times;</span>
+    <h3 id="info-nombre"></h3>
+    <p id="info-rol"></p>
+    <a id="info-instagram" href="#" target="_blank">
+      <img src="img/instagram-icon.png" alt="Instagram">
+    </a>
+  </div>
+</section>
 
-
-
-
-
- 
-
-  <section id="equipo" class="section">
-    <h2>Nuestro Equipo</h2>
-  </section>
 
   <section id="contacto" class="section">
     <h2>Contacto</h2>
   </section>
+
+
+  <script>
+  document.getElementById("btn-conocenos").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelector("#nosotros").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+</script>
 
   <script src="script.js"></script>
 </body>
