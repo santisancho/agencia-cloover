@@ -868,6 +868,29 @@ html, body {
   }
 }
 
+/* ==================== HERO RESPONSIVE FIX (mobile line break) ==================== */
+@media (max-width: 480px) {
+  .mobile-break {
+    display: block; /* fuerza salto en móviles */
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.35;
+    padding: 0 18px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* En pantallas más grandes no hay salto */
+@media (min-width: 481px) {
+  .mobile-break {
+    display: none;
+  }
+}
+
+
 
 /* ==================== ABOUT - VERSIÓN MÓVIL ==================== */
 @media (max-width: 480px) {
