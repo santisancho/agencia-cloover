@@ -197,9 +197,9 @@ html, body {
   transform: translateY(0);
 }
 
-/* Hero */
+/* ==================== HERO ==================== */
 .hero {
-  background: url('img/foto\ hero.jpg') no-repeat center center/cover;
+  background: url('img/foto hero.jpg') no-repeat center center/cover;
   position: relative;
 }
 
@@ -211,14 +211,14 @@ html, body {
   background: rgba(51, 25, 34, 0.5);
 }
 
-/* ==================== HERO TEXT AJUSTADO ==================== */
+/* ==================== HERO TEXT ==================== */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
   color: var(--primary1);
   animation: fadeIn 2s ease;
-  top: -3vh; /* 🧠 sube levemente el bloque del texto */
+  top: -3vh;
 }
 
 .hero-content h1 {
@@ -228,36 +228,49 @@ html, body {
   text-align: center;
   margin: 0 auto;
   padding: 0 1rem;
-  max-width: 90%;
+  max-width: 100%;
   font-size: clamp(1.8rem, 4.5vw, 3rem);
-  line-height: 1.18; /* 💎 ajusta espacio entre “suerte” y “apostamos” */
-  white-space: normal;
-  word-break: keep-all;
-  overflow-wrap: normal;
-  hyphens: none;
+  line-height: 1.2;
+  white-space: nowrap;         /* 🔹 Mantiene una sola línea en desktop */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    white-space: normal;        /* 🔹 Permite saltos naturales */
+    overflow-wrap: break-word;
+    text-wrap: balance;
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .hero-content {
-    top: -2vh; /* 🪶 un poco más suave en móviles */
-  }
-
   .hero-content h1 {
-    font-size: 1.9rem;
-    line-height: 1.22;
+    font-size: 2rem;
+    line-height: 1.25;
+    padding: 0 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-content {
-    top: -1.5vh;
-  }
-
   .hero-content h1 {
-    font-size: 1.55rem;
-    line-height: 1.25;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    padding: 0 16px;
   }
 }
+
+/* ==================== FONDO AJUSTADO ==================== */
+@media (max-width: 768px) {
+  .hero {
+    background-position: 45% center;
+  }
+}
+
+
+
 
 
 
