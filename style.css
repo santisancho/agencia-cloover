@@ -20,7 +20,7 @@ html, body {
   overflow: hidden; 
   background: transparent; 
   font-family: 'Clash Display', sans-serif; 
-  color: white; 
+  color:white;
 }
 
 
@@ -199,8 +199,9 @@ html, body {
 
 /* ==================== HERO ==================== */
 .hero {
-  background: url('img/foto hero.jpg') no-repeat center center/cover;
+  background: url('img/foto\ hero.jpg') no-repeat center center/cover;
   position: relative;
+  min-height: 100vh;
 }
 
 .hero::after {
@@ -218,7 +219,11 @@ html, body {
   text-align: center;
   color: var(--primary1);
   animation: fadeIn 2s ease;
-  top: -3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 🔹 centra verticalmente */
 }
 
 .hero-content h1 {
@@ -228,37 +233,48 @@ html, body {
   text-align: center;
   margin: 0 auto;
   padding: 0 1rem;
-  max-width: 100%;
-  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  max-width: 900px;
+  font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 1.2;
-  white-space: nowrap;         /* 🔹 Mantiene una sola línea en desktop */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal; /* 🔹 siempre permite varias líneas */
+}
+
+/* ==================== HERO TEXT AJUSTE FINAL ==================== */
+.hero-content h1 {
+  font-family: 'Monument Extended', sans-serif;
+  font-weight: 400;
+  color: var(--primary1);
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 900px;
+  font-size: clamp(2.4rem, 5vw, 4.2rem); /* 🔹 leve aumento base */
+  line-height: 1.2;
+  white-space: normal;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6); /* 🔹 sombra suave pero profunda */
 }
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {
   .hero-content h1 {
-    white-space: normal;        /* 🔹 Permite saltos naturales */
-    overflow-wrap: break-word;
-    text-wrap: balance;
-    font-size: 2.2rem;
+    font-size: 5rem; /* 🔹 antes 3rem */
+    line-height: 1.25;
   }
 }
 
 @media (max-width: 768px) {
   .hero-content h1 {
-    font-size: 2rem;
-    line-height: 1.25;
-    padding: 0 12px;
+    font-size: 5rem; /* 🔹 antes 2.3rem */
+    line-height: 1.3;
+    padding: 0 18px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-content h1 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-    padding: 0 16px;
+    font-size: 5rem; /* 🔹 antes 1.9rem */
+    line-height: 1.35;
+    padding: 0 22px;
   }
 }
 
@@ -270,38 +286,6 @@ html, body {
 }
 
 
-
-
-
-
-.stair-title span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(-100px);
-  animation: dropIn 0.6s ease forwards;
-}
-
-.btn-primary {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 30px;
-  background: #6c5ce7;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  cursor: pointer;
-
-  opacity: 0;
-  transform: translateY(-40px);
-  animation: dropIn 0.6s ease forwards;
-  animation-delay: 1.5s;
-}
-
-.btn-primary:hover {
-  background: var(--secondary1);
-  color: white;
-}
 
 /* ========================= Sección Nosotros ========================= */
 .about {
@@ -406,11 +390,13 @@ html, body {
   color: var(--primary1);
 }
 
+/* Carrusel general */
 .carousel {
   position: relative;
   width: 100%;
   max-width: 1200px;
-  overflow: hidden;
+  overflow: visible; /* deja flotar el halo */
+  padding-block: 40px;
 }
 
 .track {
@@ -435,49 +421,41 @@ html, body {
   position: relative;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 22px;
-  padding: 30px;
+  padding: 60px 30px;
+  min-height: 350px;
   text-align: center;
   backdrop-filter: blur(10px);
-  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
-.carousel .card:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 30px rgba(77, 184, 255, 0.6);
+/* Contenido interno */
+.carousel .card .inner {
+  position: relative;
+  z-index: 2;
+  border-radius: 20px;
+  padding: 30px;
+  background: transparent;
 }
 
-/* Borde animado */
+/* Halo exterior */
 .carousel .card::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 20px;
-  padding: 2px;
-  background: linear-gradient(270deg, #331922);
-  background-size: 400% 400%;
-  animation: borderShift 10s linear infinite;
+  border-radius: 22px;
+  background: none;
+  box-shadow: 0 0 0 transparent;
+  transition: box-shadow 0.3s ease;
   z-index: 0;
 }
 
-.carousel .card::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+.carousel .card:hover::before {
+  box-shadow: 0 0 35px 12px rgba(189, 173, 234, 0.6);
 }
 
-@keyframes borderShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.carousel .card > * {
-  position: relative;
-  z-index: 2;
+.carousel .card:hover {
+  transform: scale(1.06);
 }
 
 /* Video circular */
@@ -488,7 +466,7 @@ html, body {
   overflow: hidden;
   margin: 0 auto 15px auto;
   position: relative;
-  box-shadow: 0 0 25px rgba(77, 184, 255, 0.6);
+  box-shadow: 0 0 25px #BDADEA;
 }
 
 .circle-video::after {
@@ -496,7 +474,7 @@ html, body {
   position: absolute;
   inset: -5px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(77, 184, 255, 0.4), transparent 70%);
+  background: radial-gradient(circle, #331922, transparent 70%);
   animation: pulse 3s infinite ease-in-out;
 }
 
@@ -514,11 +492,11 @@ html, body {
   z-index: 2;
 }
 
-/* Texto degradado */
+/* Texto */
 .carousel .card h3 {
   font-size: 1.4rem;
   margin-bottom: 12px;
-  background: linear-gradient(90deg,  #fff);
+  background: linear-gradient(90deg, #fff, #fff);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -531,30 +509,96 @@ html, body {
   line-height: 1.5;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ========================= RESPONSIVE ========================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .carousel .card {
+    flex: 0 0 300px;
+    padding: 50px 25px;
+    min-height: 330px;
+  }
+
+  .carousel .card h3 {
+    font-size: 1.25rem;
+  }
+
+  .carousel .card p {
+    font-size: 0.9rem;
+  }
+
+  .circle-video {
+    width: 95px;
+    height: 95px;
+  }
+
   .track {
-    animation: scroll 15s linear infinite;
+    gap: 24px;
+    animation: scroll 25s linear infinite;
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .servicios {
+    padding: 70px 10px;
+  }
+
+  .servicios-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
   }
 
   .carousel .card {
     flex: 0 0 240px;
-    padding: 18px;
+    padding: 35px 18px;
+    min-height: 300px;
   }
 
   .circle-video {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
+    margin-bottom: 10px;
   }
 
   .carousel .card h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .carousel .card p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .track {
+    gap: 18px;
+    animation: scroll 18s linear infinite;
   }
 }
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+  .carousel .card {
+    flex: 0 0 210px;
+    padding: 30px 16px;
+    min-height: 280px;
+  }
+
+  .circle-video {
+    width: 75px;
+    height: 75px;
+  }
+
+  .carousel .card h3 {
+    font-size: 0.95rem;
+  }
+
+  .carousel .card p {
+    font-size: 0.75rem;
+  }
+}
+
+
+
 
 
 
@@ -652,6 +696,487 @@ html, body {
     height: 60px;
   }
 }
+
+
+
+
+
+
+/* ========================= CONTACTO ========================= */
+.contacto {
+  color: #EDDEC9;
+  padding: 140px 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: #5d527a;
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(8px);
+  transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+  font-family: 'Monument Extended', sans-serif;
+}
+
+.contacto.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+#contacto-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.contacto-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contacto-title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  color: #EDDEC9;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.25);
+}
+
+.contacto-subtitle {
+  font-size: 1.4rem;
+  max-width: 720px;
+  margin-bottom: 60px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* GRID */
+.contacto-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* INFO */
+.contacto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 300px;
+}
+
+.contacto-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.3rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  background: rgba(255,255,255,0.1);
+  padding: 20px 28px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.contacto-item:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.icon-img {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.contacto-item:hover .icon-img {
+  transform: rotate(4deg) scale(1.1);
+}
+
+.contacto a {
+  color: #EDDEC9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+.contacto a:hover {
+  color: #331922;
+}
+
+/* FORMULARIO */
+.contacto-form {
+  background: rgba(255,255,255,0.12);
+  padding: 50px 70px; /* más espacio lateral */
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  flex: 1.2; /* empuja un poco más hacia la derecha */
+  max-width: 860px; /* más ancho */
+  min-width: 400px;
+  align-self: stretch;
+}
+
+.contacto-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  font-family: 'Monument Extended', sans-serif;
+  background: rgba(255,255,255,0.9);
+  color: #331922;
+}
+
+.contacto-form button {
+  padding: 16px 28px;
+  border-radius: 10px;
+  border: none;
+  background: #EDDEC9;
+  color: #331922;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.contacto-form button:hover {
+  transform: scale(1.07);
+  filter: brightness(1.1);
+}
+
+
+
+
+
+/* ========================= RESPONSIVE ========================= */
+@media (max-width: 1200px) {
+  .contacto-form {
+    max-width: 720px;
+    padding: 45px 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .contacto-form {
+    max-width: 500px;
+    padding: 30px 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contacto-form {
+    max-width: 360px;
+    width: 95%;
+    padding: 22px 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .contacto {
+    padding: 90px 25px;
+  }
+  .contacto-title {
+    font-size: 3rem;
+  }
+  .contacto-subtitle {
+    font-size: 1.15rem;
+  }
+  .icon-img {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 992px) {
+  .contacto {
+    padding: 60px 25px 70px;
+    height: auto;
+  }
+  .contacto-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+  }
+  .contacto-title {
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+  }
+  .contacto-subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  .contacto-form {
+    max-width: 480px;
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contacto {
+    padding: 40px 15px 60px;
+  }
+  .contacto-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .contacto-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  .contacto-info {
+    width: 100%;
+    max-width: 340px;
+    gap: 10px;
+  }
+  .contacto-item {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    gap: 12px;
+  }
+  .icon-img {
+    width: 40px;
+    height: 40px;
+  }
+  .contacto-form {
+    width: 95%;
+    max-width: 360px;
+    padding: 20px;
+  }
+  .contacto-form input,
+  .contacto-form textarea {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+  .contacto-form button {
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+}
+
+
+
+
+
+
+
+
+/* ========================= FOOTER ========================= */
+.footer-section { 
+  background: radial-gradient(circle at top left, #0a0a0a 0%, #000 100%); 
+  color: #eaeaea; 
+  height: 100vh; 
+  padding: 80px 10%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
+  opacity: 0; 
+  transform: translateY(80px); 
+  filter: blur(10px); 
+  transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease; 
+  font-family: 'Poppins', sans-serif; 
+}
+
+.footer-section {
+  /* padding reducido para que no quede tanto espacio */
+  padding: 40px 10%;
+}
+
+.footer-content {
+  /* margen inferior más chico */
+  margin-bottom: 30px;
+}
+
+/* opcional: si quieres que el logo y el contenido estén más centrados verticalmente */
+.footer-section {
+  align-items: center;
+}
+
+
+.footer-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.footer {
+  width: 100%;
+  max-width: 1300px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom: 60px;
+}
+
+.footer-logo {
+  flex: 1 1 300px;
+}
+
+.footer-logo-img {
+  width: 130px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+}
+
+.footer-description {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.6;
+  max-width: 340px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-icons img {
+  width: 38px;
+  height: 38px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+
+
+
+
+/* ========================= BOTONES FLOTANTES ========================= */
+.floating-btn {
+  position: fixed;
+  bottom: 30px;
+  width: 80px;       /* antes 60px */
+  height: 80px;      /* antes 60px */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+
+  /* Animación */
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideIn 0.8s forwards;
+}
+
+.floating-btn img {
+  width: 45px;       /* antes 35px */
+  height: 45px;      /* antes 35px */
+}
+
+/* WhatsApp */
+.floating-btn.whatsapp {
+  right: 30px;
+  background-color: #25D366; /* verde WhatsApp */
+  animation-delay: 0.3s;
+}
+
+
+
+/* Hover efectos */
+.floating-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* ========================= ANIMACIÓN ========================= */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
 
 /* --------------------- MENU MOVIL --------------------- */
 .nav-toggle {

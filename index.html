@@ -32,17 +32,18 @@
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#clientes">Clientes</a></li>
-      <li><a href="#equipo">Nuestro Equipo</a></li>
+      <!-- <li><a href="#equipo">Nuestro Equipo</a></li> -->
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
 
-  <!-- HERO -->
+<!-- HERO -->
 <section id="inicio" class="section hero">
   <div class="hero-content">
     <h1 class="stair-title">
-      No apostamos a la suerte, apostamos a las ideas
+      <span>No apostamos a la suerte,</span>
+      <span>apostamos a las ideas</span>
     </h1>
   </div>
 </section>
@@ -51,6 +52,8 @@
 
 
 
+
+<!-- SECCION NOSOTROS -->
   <section id="nosotros" class="section about">
     <div class="about-content">
       <h2 class="about-title">Sobre Nosotros</h2>
@@ -80,6 +83,8 @@
     </div>
   </section>
 
+
+
  <!-- SECCIÓN SERVICIOS -->
   <section id="servicios" class="section servicios">
     <h2 class="servicios-title">Servicios</h2>
@@ -87,26 +92,15 @@
       <div class="track">
         <!-- Tarjetas originales -->
         <div class="card">
-          <div class="circle-video">
-            <video autoplay loop muted>
-              <source src="img/branding.mp4" type="video/mp4">
-            </video>
-          </div>
-          <h3>Branding</h3>
-          <p>Construimos identidades visuales sólidas que transmiten la esencia de tu marca.</p>
-        </div>
-
-        <div class="card">
-          <div class="circle-video">
-            <video autoplay loop muted>
-              <source src="img/planing.mp4" type="video/mp4">
-            </video>
-          </div>
-          <h3>Planning estratégico</h3>
-          <p>Definimos objetivos claros y diseñamos planes efectivos para el éxito digital.</p>
-        </div>
-
-        <div class="card">
+  <div class="circle-video">
+    <video autoplay loop muted>
+      <source src="img/branding.mp4" type="video/mp4">
+    </video>
+  </div>
+  <h3>Branding</h3>
+  <p>Construimos identidades visuales sólidas que transmiten la esencia de tu marca.</p>
+</div>
+       <div class="card">
           <div class="circle-video">
             <video autoplay loop muted>
               <source src="img/RRSS.mp4" type="video/mp4">
@@ -231,6 +225,9 @@
       <a href="ht" target="_blank" class="cliente" >
         <img src="img/seguridadisotipo.png" alt="Cliente 4">
       </a>
+      <a href="ht" target="_blank" class="cliente" >
+        <img src="img/palto.png" alt="Cliente 5">
+      </a>
       <!-- Duplicados para loop infinito -->
       <a href="htt" target="_blank" class="cliente" >
         <img src="img/madera.png" alt="Cliente 1">
@@ -243,6 +240,9 @@
       </a>
       <a href="htt" target="_blank" class="cliente" >
         <img src="img/seguridadisotipo.png" alt="Cliente 4">
+      </a>
+      <a href="ht" target="_blank" class="cliente" >
+        <img src="img/palto.png" alt="Cliente 5">
       </a>
     </div>
   </div>
@@ -261,9 +261,107 @@
 
 
 
-  <section id="contacto" class="section">
-    <h2>Contacto</h2>
-  </section>
+<!-- SECCIÓN CONTACTO -->
+<section id="contacto" class="section contacto">
+  <canvas id="contacto-bg"></canvas>
+
+  <div class="contacto-content">
+    <h2 class="contacto-title">Contacto</h2>
+    <p class="contacto-subtitle">Estamos listos para escuchar tus ideas y llevarlas al siguiente nivel.</p>
+
+    <div class="contacto-grid">
+
+      <!-- Información de contacto izquierda -->
+      <div class="contacto-info">
+        <div class="contacto-item">
+          <img src="img/whatsapp cloover.png" alt="WhatsApp" class="icon-img">
+          <div>
+            <p><a href="https://wa.me/5493489636460" target="_blank">+54 9 3489 63-6460</a></p>
+            <p><a href="https://wa.me/5493489538319" target="_blank">+54 9 3489 53-8319</a></p>
+          </div>
+        </div>
+
+      <div class="contacto-item instagram">
+  <img src="img/ig cloover.png" alt="Instagram" class="icon-img">
+  <p><a href="https://www.instagram.com/clooveragency" target="_blank">@clooveragency</a></p>
+</div>
+
+
+
+        <div class="contacto-item">
+          <img src="img/emial cloover.png" alt="Email" class="icon-img">
+          <p><a href="h">info@clooveragency.com</a></p>
+        </div>
+      </div>
+
+      <!-- Formulario central -->
+      <div class="contacto-form">
+  <form id="whatsappForm">
+    <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre completo" required>
+    <input type="email" id="email" name="Email" placeholder="Tu correo electrónico" required>
+    <textarea id="consulta" name="Consulta" rows="5" placeholder="Escribe tu consulta" required></textarea>
+    <button type="submit">Enviar por WhatsApp</button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="footer" class="section footer-section">
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="img/cloover almond claro.png" alt="Cloover Agency Logo" class="footer-logo-img">
+        <p class="footer-description">
+          Transformamos ideas en presencia digital. Estrategia, diseño y performance en un solo lugar.
+        </p>
+      </div>
+
+    
+
+      <div class="footer-social">
+        <h3>Conectemos</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/clooveragency" target="_blank"><img src="img/ig cloover.png" alt="Instagram"></a>
+          <a href="https://wa.me/5493489636460" target="_blank"><img src="img/whatsapp cloover.png" alt="WhatsApp"></a>
+          <a href="mailto:info@clooveragency.com"><img src="img/emial cloover.png" alt="Email"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 <strong>Cloover Agency</strong> — Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</section>
+
+
+
+
+
+
+
+<!-- Botón WhatsApp (abajo derecha) -->
+<a href="https://wa.me/5493489538319" target="_blank" class="floating-btn whatsapp">
+  <img src="img/png whatsapp.png" alt="WhatsApp">
+</a>
+
+
+
+
+
+
+
 
 
   <script>
@@ -274,6 +372,8 @@
     });
   });
 </script>
+
+
 
 
 
